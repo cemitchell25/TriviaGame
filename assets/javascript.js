@@ -4,11 +4,10 @@
  	  $('#Questions').hide();
  	  $('#finishButton').hide();
 
-   var number = 45;
+  var number = 45;
 	var intervalId;
 	var correctGuesses = 0;
 	var incorrectGuesses = 0;
-	var unanswered = 0;
 	var audio = new Audio("https://ia801503.us.archive.org/31/items/MandyMooreCandyMymp3converter/Mandy_Moore_-_Candy%5bMymp3converter%5d.mp3");
 
 $("#startButton").on("click", run); 
@@ -44,32 +43,37 @@ $("#startButton").on("click", run);
        $("#Questions").html("<h3>" + "SWEET SUCCESS!" + "</h3>" +
         	"<h2>" + "Correct Guesses: " + correctGuesses + "</h2>" +
         	"<h2>" + "Incorrect Guesses: " + incorrectGuesses + "</h2>" +
-        	"<h2>" + "Unanswered: " + unanswered + "</h2>" );
+        	"<h2>" + "Unanswered: " + (5 - (incorrectGuesses + correctGuesses)) + "</h2>" );
 
         $('#finishButton').hide();
     }
 
-console.log(unanswered, "THIS IS UNASWERED OUTSIDE");
 
-  $(function () {
 
-		$('input[name="test"]').on('click', function() {
+      $(function () {
 
-    if ($(this).val() == 'ans') {
+        $('input[name="test"]').on('click', function() {
+
+        if ($(this).val() == 'ans') {
+
         correctGuesses++;
-    	} 
 
-    else if ($(this).val() == 'inc') {
-        incorrectGuesses++;
-      }
+        } 
 
     else {
-      // if ($(this).val() == undefined) 
-    	unanswered++;
-      console.log(unanswered, "THIS IS UNASWERED INSIDE");
-      }
-})
+
+        incorrectGuesses++;
+        }
+
+    // if ($(this).val() !== 'ans' || 'inc') {
+    //     unanswered++;
+
+    // }
+
+    })})
+
+  }
 
 
-})});
+);
 
