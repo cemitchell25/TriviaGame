@@ -49,19 +49,25 @@ $("#startButton").on("click", run);
         $('#finishButton').hide();
     }
 
+console.log(unanswered, "THIS IS UNASWERED OUTSIDE");
 
-    $(function () {
+  $(function () {
+
 		$('input[name="test"]').on('click', function() {
-    	if ($(this).val() == 'ans') {
+
+    if ($(this).val() == 'ans') {
         correctGuesses++;
     	} 
-    else {
-        incorrectGuesses++;
-    }
 
-    if ($(this).val() === undefined) {
+    else if ($(this).val() == 'inc') {
+        incorrectGuesses++;
+      }
+
+    else {
+      // if ($(this).val() == undefined) 
     	unanswered++;
-    }
+      console.log(unanswered, "THIS IS UNASWERED INSIDE");
+      }
 })
 
 
